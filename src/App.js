@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import DigitButton from './DigitButton';
 import OperationButton from './OperationButton';
-import { useLocation } from 'react-router-dom';
+
 import './App.css';
 
 export const ACTIONS = {
@@ -134,15 +134,17 @@ function App() {
     reducer,
     {}
   );
-  const location = useLocation();
 
-  // const = state;
-
-  // dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: 1 } });
+  const getPageQuery = new URLSearchParams(window.location.search);
+  const id = getPageQuery.get('device_id');
 
   return (
     <>
-      <div> welcome to use calculator {location.search.slice(1)}</div>
+      <div>
+        welcome to use calculator
+        {id}
+      </div>
+
       <div className="calculator-grid">
         <div className="output">
           <div className="previous-operand">
